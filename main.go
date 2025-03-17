@@ -6,17 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
-	// Import any other necessary packages
 )
-
-// User represents a user in the system (employer or job seeker)
-type User struct {
-	gorm.Model
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Role     string `json:"role"` // "employer" or "job_seeker"
-}
 
 func main() {
 
@@ -34,6 +24,7 @@ func main() {
 
 	// Registration route
 	r.POST("/register", handlers.Register)
+	r.POST("/login", handlers.Login)
 
 	// Start the server
 	r.Run(":8080")
